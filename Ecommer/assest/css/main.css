@@ -454,4 +454,21 @@ i.fas fa-check{
     margin-top: 100px;
     border-top: 0.5px groove ;
     display: flex;
+    
+}
+.footer__list{
+    list-style: none;
+    font-size: 1.6rem;
+    padding: 10px;
+}
+.footer__heading{
+    font-size: 1.5rem;
+}
+.footer-items a{ 
+    text-decoration: none;
+    margin: 10px;
+    width: 100%;
+    text-align: center;    
+}
+.footer-item__link{
 }
