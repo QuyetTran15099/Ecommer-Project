@@ -1,0 +1,261 @@
+========== ĐỘ ƯU TIÊN ==================
+
+1. Internal và External? => ngang bằng cái nào gọi trước thì ưu tiên cái đó
+2. Inline - 1000
+3. #id - 100
+4. .class- 10
+5. tag - 1
+=> cái nào có điểm cao hơn thì ưu tiên cao hơn
+
+
+6. Equal specificity?
+=> khi 2 cái giống nhau ví dụ như id class,.. thì cái nào nào mới viết thì ưu tiên hơn
+
+7.Universal selector and inherited?=> thuộc tính chung và thừa hưởng(0 điểm)
+================= variable css=============================================
+;root{
+   --variableName: value;
+   --text-color : green;	
+}=> global
+
+h1{
+	--my-color:green;
+	color:var(--my-color);
+}=>local
+
+
+=> how to use: h1{
+	color: var(--text-color);
+}
+
+==================== Unit in css============================================
+
+1. Absolute units(đơn vị tuyệt đối)=> px,pt,cm,mm,inch,pe
+
+2. Relative units(đơn vị tương đối)=> %(phụ thuộc vào thẻ chứa nó)
+- rem(Relative to font-size of the root element),
+- em(Relative to the font-size of the element (2em means 2 times the size of the current font)),
+- vw(Relative to 1% of the width of the viewport*),
+- vh(Relative to 1% of the height of the viewport*),
+
+vmin,vimax,ex,ch
+
+======================Backgound image================================================
+
+-background-image: linear-gradient(to right, red , yellow);
+CSS gradients let you display smooth transitions between two or more specified colors.
+
+CSS defines two types of gradients:
+
+Linear Gradients (goes down/up/left/right/diagonally)
+Radial Gradients (defined by their center)
+
+=========================== background-size ============================================================
+- auto	Default value. The background image is displayed in its original size
+- length	Sets the width and height of the background image. 
+The first value sets the width, the second value sets the height. 
+If only one value is given, the second is set to "auto
+
+- cover	Resize the background image to cover the entire container, even if it has to stretch the image or cut a little bit off one of the edges
+- contain	Resize the background image to make sure the image is fully visible
+
+=============================== box-sizing=====================================
+
+By default, the width and height of an element is calculated like this:
+bo
+width + padding + border = actual width of an element
+height + padding + border = actual height of an element
+
+This means: When you set the width/height of an element, 
+the element often appears bigger than you have set
+ (because the element's border and padding are added to the element's specified width/height).
+The box-sizing property solves this problem
+
+If you set box-sizing: border-box; on an element, padding and border are included in the width and height:
+
+
+==================================CSS Functions===========================================================
+
+- attr()	Returns the value of an attribute of the selected element
+- rgb()		Defines colors using the Red-Green-Blue model (RGB)
+- rgba()	Defines colors using the Red-Green-Blue-Alpha model (RGBA)
+......
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+a:after {content: " (" attr(href) ")";}
+</style>
+</head>
+<body>
+
+<h1>The attr() Function</h1>
+
+<p>Insert the value of the href attribute in parenthesis after each link:</p>
+
+<p><a href="https://www.w3schools.com">Visit W3Schools</a></p>
+<p><a href="https://www.w3schools.com/html/">Visit W3Schools' HTML tutorial</a></p>
+
+</body>
+</html>
+
+================================CSS PSEUDO CLASSES=================================================
+
+https://www.w3schools.com/css/css_pseudo_classes.asp
+
+================================ CSS PSEUDO ELEMENTS====================================
+https://www.w3schools.com/css/css_pseudo_elements.asp
+
+==============================CSS POSITION======================================
+  Position Relative
+
+An element with position: relative; is positioned relative to its normal position.
+
+Setting the top, right, bottom, and left properties of a relatively-positioned element will cause it to be adjusted away from its normal position. 
+Other content will not be adjusted to fit into any gap left by the element.
+=> Using position relative can đè lên content 
+=> k phụ thuộc vào bất cứ thẻ hả thành phần nào,lấy chính nó làm gốc tọa độ
+
+  Position Absolute
+=> Phụ thuộc vào thẻ cha gần nhất có thuộc tính postion(bất cứ thuộc tính nào)
+ 
+  Position Fixed
+=> phụ thuộc vào cửa sổ của trình duyệt 
+============================ FLEXBOX====================================================
+
+Các thuộc tính trong flexbox
+1.justify-content: 
+-space-between =>Items are positioned with space between the lines.(cách đều giữa các item)
+-space-round => Items are positioned with space before, between, and after the lines
+(cách đều theo mép màn hình giữa các item)
+
+2.flex: => shorthand of flex-basic, flex-shrink, flex-grow
+The flex property sets the flexible length on flexible items.
+Note: If the element is not a flexible item, the flex property has no effect.
+
+3. flex-basic: The flex-basis property specifies the initial length of a flexible item.
+
+Note: If the element is not a flexible item, the flex-basis property has no effect.
+4. order => sắp xếp thứ tự các cột flex item
+
+===================== RESET CSS ============================================================
+https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css.map
+
+đưa đg link nào vào thẻ link => mục đích là nhắm rs của css mặc định của trình duyệt
+
+==========================Thủ thuật dựng css base ========================================================
+cài đặt file css 
+
+html{
+  font-size:62.5%; =>mặc định 100% là bằng 16px thì 62.5% tương đương vs 10px => để làm gì: dễ chia rem 1rem=10px
+}
+p{
+  font-size:1rem; = 10px	
+}
+.grid{
+    /*
+    -với những màn hình có kích thước lớn hơn 1200px thì 
+    kích thước tối đa của class grid này là chỉ 1200px thôi
+    -  nhưng vs nhưng màn hình có kịc thước nhỏ hơn 1200px thì
+    max-width:100%;=> có tác dụng giảm kích thước của grid bằng vs kích thước của màn hình.
+    -margin:0 auto; => tự động căn giữa các khối grid này khi nằm trong 1 khối khác.
+    */
+    width: 1200px;
+    max-width: 100%;   
+    margin: 0 auto; 
+}
+
+.grid__full-width{
+    /*
+    sử dụng đối vs những thằng màn hình là 1200px
+    */
+    width: 100%;
+}
+
+.grid_row{
+    /*
+    những thẻ này nằm trong class này sẽ nằm trên cùng 1 hàng ngang => main asis là cột nằm ngang 
+    và tự động xuống dòng nếu vượt quá class grid_row
+    */
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+================ z-index=====================
+Trong1 layout có nhiều tầng 
+=> thằng nào có z-index cao hơn thằng đó sẽ xếp trên
+=> mặc định z-index bằng 0
+============== cách làm ra 1 modal =======================
+-Thành phần chính gồm 3 phần
+1.1 lớp modal để chiếm hết màn hình
+2.1 Lớp overlay để phủ hết lớp mờ mờ nhìn xuyên qua
+3.1 lớp body là phần nội dung chính của chúng ví dụ như trang login,..
+4.Lớp modal inner để viết content vào trong.
+
+<!-- Modal layout-->
+      <div class="modal">
+        <div class="modal__overlay"></div>
+        <div class="modal__body">
+          <div class="modal__inner">
+            
+          </div>
+        </div>
+      </div>
+
+---css-----
+/* Modal layout*/
+.modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+}
+.modal__overlay{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0 , 0, 0.4);
+}
+.modal__body{
+    width: 300px;
+    height: 300px;
+    background-color: var(--white-color);
+    margin: auto;
+    z-index: 1;
+    border-radius: 5px;
+}	
+
+=========================================================================
+
+file ảnh svg lấy trên mạng thường có thuộc tính màu là fill color nên chú ý
+
+set màu cho ảnh kiểu file svg 
+
+<svg viewBox="0 0 192 65" class="header__log-img">
+                  <g fill-rule="evenodd">
+                      <path
+                          fill="#fff"
+                      ></path>
+                  </g>
+              </svg>
+
+=============================================================================
+Transition=> định nghĩa chuyển động
+
+display: flex; KẾT HỢP  justify-content: flex-end; => ĐỔI VỊ TRÍ VỀ CUỐI
+
+over-flow:hidden; => khi thẻ con có kích thước ra khỏi thẻ cha chúng ta vẫn nhìn đc
+=> sử dụng over-flow thì chúng ta sẽ hành sử như thế nào. hidden(ẩn đi)
+
+cách tạo ra hình tam giác
+ border-top: 20px solid #F63D30;
+    border-left: 20px solid #F63D30 transparent;
+
+1.    làm thuộc tính chuyển động 
+
+=================== transition và transform tìm hiểu thêm===
+
