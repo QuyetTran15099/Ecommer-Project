@@ -52,6 +52,41 @@ header__navbar-item-link,
   right: 0;
   width: 404px;
   background-color: var(--white-color);
+  cursor: default;
+  transform-origin: calc(100% - 20px) top;
+  animation: headerNotifyGrowth ease-in 0.2s;
+  /*tối ưu hóa chuyển động cho opacity và trransform*/
+  will-change: opacity transform;
+  display: none;
+}
+@keyframes headerNotifyGrowth {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.header_notify::before {
+  content: "";
+  border-width: 20px 27px;
+  border-style: solid;
+  border-color: transparent transparent var(--white-color) transparent;
+  position: absolute;
+  right: 4px;
+  top: -29px;
+}
+/*Làm cầu để khi rê chuột chéo qua k bị ẩn mất thông báo*/
+.header_notify::after {
+  content: "";
+  display: block;
+  position: absolute;
+  right: 0;
+  top: -16px;
+  width: 90px;
+  height: 20px;
 }
 .header__notify-header {
   height: 40px;
@@ -63,6 +98,7 @@ header__navbar-item-link,
   font-weight: 400;
   font-size: 1.4rem;
   line-height: 40px;
+  user-select: none;
 }
 .header__notify-list {
   padding-left: 0;
@@ -99,6 +135,7 @@ header__navbar-item-link,
   font-size: 1.4rem;
   color: var(--black-color);
   font-weight: 400px;
+  line-height: 1.8rem;
 }
 
 .header__notify-description {
@@ -106,15 +143,21 @@ header__navbar-item-link,
   font-size: 1.2rem;
   line-height: 1.2rem;
   color: #756f6e;
+  margin-top: 4px;
 }
 
 .header__notify-footer {
-  text-align: center;
+  display: flex;
 }
 .header__notify-footer-btn {
   color: var(--text-color);
   text-decoration: none;
-  padding: 4px 16px;
+  width: 100%;
+  padding: 8px 0;
+  margin: auto;
+  font-size: 1.4rem;
+  font-weight: 400;
+  text-align: center;
 }
 
 /* End Header notification*/
@@ -146,6 +189,9 @@ qr__header-link:nth-child(2) {
   margin-right: 11px;
 }
 .header__navbar-item-has-qr:hover .header__qr {
+  display: block;
+}
+.header__navbar-item--has-notify:hover .header_notify {
   display: block;
 }
 .qr__header-link,
