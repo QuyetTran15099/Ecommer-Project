@@ -1,126 +1,152 @@
 :root {
-  --white-color: #fff;
-  --black-color: #000;
-  --text-color: #333;
-  --border-color: #dbdbdb;
-  --primary-color: #f53e2d;
-
-  --header-height: 120px;
-  --navbar-height: 34px;
-  --header-with-search-height: calc(
-    var(--header-height) - var(--navbar-height)
-  );
+    --white-color: #fff;
+    --black-color: #000;
+    --text-color: #333;
+    --border-color: #dbdbdb;
+    --primary-color: #f53e2d;
+    --header-height: 120px;
+    --navbar-height: 34px;
+    --header-with-search-height: calc( var(--header-height) - var(--navbar-height));
+    --border-color: #dbdbdb;
 }
 
 * {
-  box-sizing: inherit;
+    box-sizing: inherit;
 }
 
 html {
-  /* 100% = 16px*/
-  font-size: 62.5%;
-  line-height: 1.6rem;
-  font-family: "Roboto", sans-serif;
-  box-sizing: border-box;
+    /* 100% = 16px*/
+    font-size: 62.5%;
+    line-height: 1.6rem;
+    font-family: "Roboto", sans-serif;
+    box-sizing: border-box;
 }
+
+
 /* Responsive */
 
 .grid {
-  /*
+    /*
     -với những màn hình có kích thước lớn hơn 1200px thì 
     kích thước tối đa của class grid này là chỉ 1200px thôi
     -  nhưng vs nhưng màn hình có kịc thước nhỏ hơn 1200px thì
     max-width:100%;=> có tác dụng giảm kích thước của grid bằng vs kích thước của màn hình.
     -margin:0 auto; => tự động căn giữa các khối grid này khi nằm trong 1 khối khác.
     */
-  width: 1200px;
-  max-width: 100%;
-  margin: 0 auto;
+    width: 1200px;
+    max-width: 100%;
+    margin: 0 auto;
 }
 
 .grid__full-width {
-  /*
+    /*
     sử dụng đối vs những thằng màn hình là 1200px
     */
-  width: 100%;
+    width: 100%;
 }
 
-.grid_row {
-  /*
+.grid__row {
+    /*
     những thẻ này nằm trong class này sẽ nằm trên cùng 1 hàng ngang => main asis là cột nằm ngang 
     và tự động xuống dòng nếu vượt quá class grid_row
     */
-  display: flex;
-  flex-wrap: wrap;
-  margin-left: -12px;
-  margin-right: -12px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -5px;
+    margin-right: -5px;
 }
+
+
 /* Test */
+
 .grid__column-2 {
-  padding-left: 12px;
-  padding-right: 12px;
-  width: 16.6667%;
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 16.6667%;
 }
+
 .grid__column-2-4 {
-  display: inline-flex;
-  padding-left: 12px;
-  padding-right: 12px;
-  width: 19.5%;
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 20%;
 }
+
 .grid__column-10 {
-  padding-left: 12px;
-  padding-right: 12px;
-  width: 83.3334%;
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 83.3334%;
 }
-.grid__column-footer {
-  display: inline-flex;
-  padding-left: 12px;
-  padding-right: 12px;
-  width: 19.5%;
-}
+
 
 /*Anamation*/
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
+
+
 /* Modal layout*/
+
 .modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  animation: fadeIn ease-in 0.1s;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    animation: fadeIn linear 0.1s;
+    display: none;
 }
+
 .modal__overlay {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.4);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
 }
+
 .modal__body {
-  --growth-from: 0.7;
-  --growth-to: 1;
-  width: 300px;
-  height: 300px;
-  background-color: var(--white-color);
-  margin: auto;
-  z-index: 1;
-  border-radius: 5px;
-  animation: growth linear 0.2s;
+    --growth-from: 0.7;
+    --growth-to: 1;
+    margin: auto;
+    position: relative;
+    z-index: 1;
+    border-radius: 5px;
+    animation: growth linear 0.1s;
 }
+
 @keyframes growth {
-  from {
-    transform: scale(var(--growth-form));
-  }
-  to {
-    transform: scale(var(--growth-to));
-  }
+    from {
+        transform: scale(var(--growth-form));
+    }
+    to {
+        transform: scale(var(--growth-to));
+    }
+}
+
+.btn {
+    min-width: 142px;
+    height: 34px;
+    border: none;
+    border-radius: 2px;
+    font-size: 1.5rem;
+    padding: 0;
+    color: var(--text-color);
+    justify-content: center;
+    align-items: center;
+}
+
+.btn.btn--primary {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+}
+
+.btn .btn--with-size-s {
+    height: 30px;
+    font-size: 12px;
 }
