@@ -8,6 +8,7 @@
     --navbar-height: 34px;
     --header-with-search-height: calc( var(--header-height) - var(--navbar-height));
     --border-color: #dbdbdb;
+    --header-sort-bar-height: 40px
 }
 
 * {
@@ -25,25 +26,31 @@ html {
 
 /* Responsive */
 
-.grid {
-    /*
+
+/*
     -với những màn hình có kích thước lớn hơn 1200px thì 
     kích thước tối đa của class grid này là chỉ 1200px thôi
     -  nhưng vs nhưng màn hình có kịc thước nhỏ hơn 1200px thì
     max-width:100%;=> có tác dụng giảm kích thước của grid bằng vs kích thước của màn hình.
     -margin:0 auto; => tự động căn giữa các khối grid này khi nằm trong 1 khối khác.
     */
+
+
+/* .grid {
     width: 1200px;
     max-width: 100%;
     margin: 0 auto;
-}
+} */
 
-.grid__full-width {
-    /*
+
+/*
     sử dụng đối vs những thằng màn hình là 1200px
     */
+
+
+/* .grid__full-width {
     width: 100%;
-}
+} */
 
 .grid__row {
     /*

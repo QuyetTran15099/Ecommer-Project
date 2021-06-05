@@ -1,0 +1,46 @@
+/* Moible and Tablet */
+
+@media (max-width: 1023px) {
+     :root {
+        --header-height: 68px;
+        --navbar-height: 0px;
+    }
+    .hide-on-mobile-tablet {
+        display: none;
+    }
+}
+
+
+/*  tablet */
+
+@media(min-width:740px) and (max-width:1023px) {
+    .hide-on-tablet {
+        display: none;
+    }
+    .fix-category {
+        margin-top: 50px;
+    }
+    .header__sort-bar {
+        position: fixed;
+        top: var(--header-height);
+        left: 0;
+        right: 0;
+        height: var(--header-sort-bar-height);
+        background-color: var(--white-color);
+        display: flex;
+        list-style: none;
+        padding-left: 0;
+    }
+}
+
+
+/* moblie */
+
+@media(max-width:739px) {
+    .hide-on-mobile {
+        display: none;
+    }
+    .fix-category {
+        margin-top: 50px;
+    }
+}
